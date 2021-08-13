@@ -48,8 +48,6 @@ class Station:
         res = []
         current_time = int(time.time())
 
-        self.interface.showNodes()
-
         for node in self.interface.nodes.values():
             if node['num'] != self.current_node_id:
                 pos = node.get('position', {})
