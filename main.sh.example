@@ -1,4 +1,5 @@
 export STATION_MQTT_HOST=meshtastic_mqtt
+export STATION_MQTT_PORT=1883
 export STATION_MQTT_IN_TOPIC=input_data
 
 export STATION_GET_NODES_INTERVAL=10

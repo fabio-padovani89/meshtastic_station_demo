@@ -9,10 +9,12 @@ import paho.mqtt.client as mqtt_client
 
 
 class MQTTInterface:
+    default_port = 1883
 
-    def __init__(self, host=None, topic=None):
+    def __init__(self, host=None, port=None, topic=None):
         self.client = None
         self.host = host
+        self.port = port if port is not None else self.default_port
         self.topic = topic
 
     def connect(self):
@@ -24,7 +26,7 @@ class MQTTInterface:
 
         self.client = mqtt_client.Client()
         self.client.on_connect = on_connect
-        self.client.connect(self.host)
+        self.client.connect(self.host, port=self.port)
         self.client.loop_start()
 
     def publish(self, messages):
