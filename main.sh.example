@@ -1,0 +1,7 @@
+# MQTT
+export STATION_MQTT_HOST=meshtastic_mqtt
+export STATION_MQTT_IN_TOPIC=input_data
+
+export STATION_GET_NODES_INTERVAL=10
+
+python3 main.py
