@@ -6,6 +6,7 @@ from json import dumps
 from threading import Timer
 
 import meshtastic
+import meshtastic.serial_interface
 import paho.mqtt.client as mqtt_client
 
 
@@ -49,7 +50,7 @@ class MQTTInterface:
             self.topic,
             dumps(messages)
         )
-    
+
     def close(self):
         self.client.disconnect()
 
@@ -57,10 +58,10 @@ class MQTTInterface:
 class Station:
 
     def __init__(self):
-        self.interface = meshtastic.SerialInterface()
+        self.interface = meshtastic.serial_interface.SerialInterface()
         self.current_node_info = self.interface.getMyNodeInfo()
         self.current_node_id = self.current_node_info.get('num', None)
-    
+
     def get_nodes_info(self):
         res = []
         current_time = int(time.time())
@@ -119,4 +120,3 @@ if __name__ == '__main__':
     task_nodes_data.run()
 
     atexit.register(exit_procedure)
-
